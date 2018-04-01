@@ -24,8 +24,7 @@ module.exports = function (wallaby) {
     //setup virtual dom and browser in test environment
     setup: (wallaby) => {
 
-      if (global.window) global.window.close();
-      if (global.document) global.document.close();
+      delete require.cache[require.resolve('jquery')];
 
       //pass local project directory to test file
       global.isBeingRunInWallaby = true;
